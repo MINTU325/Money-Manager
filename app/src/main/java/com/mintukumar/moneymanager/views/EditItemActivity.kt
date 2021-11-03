@@ -4,6 +4,7 @@ import com.mintukumar.moneymanager.model.Money
 import com.mintukumar.moneymanager.viewmodel.MoneyViewModel
 import android.app.DatePickerDialog
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -64,6 +65,7 @@ class EditItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                         etAmount.text.toString().toFloat(),etName.text.toString(),etDescription.text.toString(),
                         tvDate.text.toString())
                     moneyViewModel.addMoney(money)
+                    FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(Intent(this, MainActivity::class.java))
                 }
             }

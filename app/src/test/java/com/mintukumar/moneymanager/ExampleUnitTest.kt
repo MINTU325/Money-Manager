@@ -1,4 +1,4 @@
-package com.example.moneymanager
+package com.mintukumar.moneymanager
 
 import org.junit.Test
 

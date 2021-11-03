@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="12dp"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/grey_shape"
+        android:layout_height="match_parent"
+
+
+        >
+
+        <TextView
+            android:id="@+id/tvAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="0.00"
+            android:textColor="@color/green"
+            android:textSize="20sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/tvName"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="20dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:text="Name"-->
+<!--            android:layout_toRightOf="@id/tvAmount"-->
+<!--            android:textColor="#2196F3"-->
+<!--            android:textSize="20sp" />-->
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvAmount"
+            android:layout_marginBottom="10dp"
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            android:text="Description Of Trans"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="20dp"
+            android:text="dd/MM/yyyy" />
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

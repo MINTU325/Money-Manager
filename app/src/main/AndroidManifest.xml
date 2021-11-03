@@ -8,21 +8,30 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.MoneyManager">
-
+        android:theme="@style/Theme.MoneyManager"
+        android:usesCleartextTraffic="true">
         <activity
-            android:name="com.mintukumar.moneymanager.views.EditItemActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.mintukumar.moneymanager.views.MainActivity"
+            android:name=".views.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity
+            android:name=".views.EditItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.MainActivity"
+            android:exported="true">
+
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

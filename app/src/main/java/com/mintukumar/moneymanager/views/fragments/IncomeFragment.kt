@@ -18,7 +18,15 @@ import com.mintukumar.moneymanager.viewmodel.MoneyViewModelFactory
 import com.mintukumar.moneymanager.views.EditItemActivity
 import com.mintukumar.moneymanager.views.adapter.MoneyAdapter
 import com.mintukumar.moneymanager.views.adapter.OnItemClickListener
+import kotlinx.android.synthetic.main.activity_add_edit_item.*
 import kotlinx.android.synthetic.main.fragment_income.*
+import android.content.SharedPreferences
+import android.content.SharedPreferences.Editor
+
+import android.preference.PreferenceManager
+
+
+
 
 //@AndroidEntryPoint
 class IncomeFragment : Fragment(R.layout.fragment_income), OnItemClickListener {
@@ -31,6 +39,7 @@ class IncomeFragment : Fragment(R.layout.fragment_income), OnItemClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         val moneyDatabase = MoneyDatabase.getDatabaseObject(context)
         val moneyDAO = moneyDatabase.getMoneyDAO()
         val moneyRepo = MoneyRepo(moneyDAO)
@@ -38,6 +47,22 @@ class IncomeFragment : Fragment(R.layout.fragment_income), OnItemClickListener {
 
         moneyViewModel = ViewModelProviders.of(this,moneyViewModelFactory).
         get(MoneyViewModel::class.java)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
+        if (!prefs.getBoolean("firstTime", false)) {
+            // <---- run your one time code here
+            if (listMoney.size==0){
+                val money = Money("Income",
+                    0.00f,"Name", "Description",
+                    "Date")
+                moneyViewModel.addMoney(money)
+            }
+
+            // mark first time has ran.
+            val editor = prefs.edit()
+            editor.putBoolean("firstTime", true)
+            editor.commit()
+        }
+
 
         recyclerView.adapter = MoneyAdapter(listMoney,this)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -53,6 +78,7 @@ class IncomeFragment : Fragment(R.layout.fragment_income), OnItemClickListener {
             listMoney.addAll(it)
             recyclerView.adapter?.notifyDataSetChanged()
         })
+
     }
 
 

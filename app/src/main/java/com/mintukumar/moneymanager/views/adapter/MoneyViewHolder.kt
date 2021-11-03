@@ -18,6 +18,7 @@ class MoneyViewHolder(itemView: View, val onItemClickListener: OnItemClickListen
             else tvAmount.setTextColor(ContextCompat.getColor(context, R.color.red))
             tvDescription.text = money.description
             tvDate.text = money.date
+            tvName.text = money.name
         }
         itemView.item.setOnClickListener {
             onItemClickListener.onClick(money)

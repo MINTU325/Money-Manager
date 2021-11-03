@@ -62,7 +62,7 @@ class EditItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             btnSubmit.setOnClickListener {
                 if(credentials()){
                     val money = Money(spinner.selectedItem.toString(),
-                        etAmount.text.toString().toFloat(),etDescription.text.toString(),
+                        etAmount.text.toString().toFloat(),etName.text.toString(),etDescription.text.toString(),
                         tvDate.text.toString())
                     moneyViewModel.addMoney(money)
                     startActivity(Intent(this, MainActivity::class.java))
@@ -97,6 +97,7 @@ class EditItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
         btnSubmit.setOnClickListener {
             if(credentials()){
+                money.name = etName.text.toString()
                 money.description = etDescription.text.toString()
                 money.amount = etAmount.text.toString().toFloat()
                 money.category = spinner.selectedItem.toString()
@@ -110,6 +111,10 @@ class EditItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
 
     private fun credentials(): Boolean {
+        if(etName.text.toString().isEmpty()){
+            etName.setError("Enter Name ")
+            return false
+        }
         if(etAmount.text.toString().isEmpty()){
             etAmount.setError("Enter the Amount ")
             return false

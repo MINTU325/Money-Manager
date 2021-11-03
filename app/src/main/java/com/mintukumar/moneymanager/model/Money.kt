@@ -8,6 +8,7 @@ import java.io.Serializable
 @Entity(tableName = "money")
 data class Money(@ColumnInfo(name = "category") var category: String,
                  @ColumnInfo(name = "amount") var amount: Float,
+                 @ColumnInfo(name = "name") var name: String,
                  @ColumnInfo(name = "description") var description: String,
                  @ColumnInfo(name = "date") var date: String): Serializable {
 

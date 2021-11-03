@@ -46,7 +46,6 @@ class IncomeFragment : Fragment(R.layout.fragment_income), OnItemClickListener {
 
     }
 
-    /* Continuously observing live data from room database and showing it on recycler view */
 
     private fun getDataFromDB(){
         moneyViewModel.getAllMoney("Income").observe(viewLifecycleOwner, Observer {
@@ -56,8 +55,6 @@ class IncomeFragment : Fragment(R.layout.fragment_income), OnItemClickListener {
         })
     }
 
-    /* On click of any item in the recycler view showing custom alert dialog box in which asking for
-    * edition or deletion of particular item */
 
     override fun onClick(money: Money) {
         val alertDialog = AlertDialog.Builder(context).create()

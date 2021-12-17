@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MoneyRepo ( val moneyDAO: MoneyDAO) {
+class MoneyRepo @Inject constructor( val moneyDAO: MoneyDAO) {
 
     fun addMoneyToRoom(money: Money){
         CoroutineScope(Dispatchers.IO).launch {

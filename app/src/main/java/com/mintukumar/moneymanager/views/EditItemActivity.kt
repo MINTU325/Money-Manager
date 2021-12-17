@@ -9,26 +9,28 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.mintukumar.moneymanager.R
 import com.mintukumar.moneymanager.model.MoneyDatabase
 import com.mintukumar.moneymanager.repository.MoneyRepo
 import com.mintukumar.moneymanager.viewmodel.MoneyViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_add_edit_item.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class EditItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private var calendar = Calendar.getInstance()
     private val dateFormat = SimpleDateFormat("dd/MM/yyyy")
     private lateinit var pickDate: DatePickerDialog.OnDateSetListener
 
-//    private val moneyViewModel: MoneyViewModel by viewModels()
-    lateinit var  moneyViewModel: MoneyViewModel
+    private val moneyViewModel: MoneyViewModel by viewModels()
+//    lateinit var  moneyViewModel: MoneyViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,13 +38,13 @@ class EditItemActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
         PickDate()
 
-        val moneyDatabase = MoneyDatabase.getDatabaseObject(this)
-        val moneyDAO = moneyDatabase.getMoneyDAO()
-        val moneyRepo = MoneyRepo(moneyDAO)
-        val moneyViewModelFactory = MoneyViewModelFactory(moneyRepo)
+//        val moneyDatabase = MoneyDatabase.getDatabaseObject(this)
+//        val moneyDAO = moneyDatabase.getMoneyDAO()
+//        val moneyRepo = MoneyRepo(moneyDAO)
+//        val moneyViewModelFactory = MoneyViewModelFactory(moneyRepo)
 
-        moneyViewModel = ViewModelProviders.of(this,moneyViewModelFactory).
-        get(MoneyViewModel::class.java)
+//        moneyViewModel = ViewModelProviders.of(this,moneyViewModelFactory).
+//        get(MoneyViewModel::class.java)
 
 
         ArrayAdapter.createFromResource(this, R.array.category,

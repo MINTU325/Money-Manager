@@ -24,29 +24,29 @@ import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
 
 import android.preference.PreferenceManager
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
-
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class IncomeFragment : Fragment(R.layout.fragment_income), OnItemClickListener {
 
     private var listMoney = mutableListOf<Money>()
 
-//    private val moneyViewModel: MoneyViewModel by viewModels()
-     lateinit var moneyViewModel: MoneyViewModel
+    private val moneyViewModel: MoneyViewModel by viewModels()
+//     lateinit var moneyViewModel: MoneyViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val moneyDatabase = MoneyDatabase.getDatabaseObject(context)
-        val moneyDAO = moneyDatabase.getMoneyDAO()
-        val moneyRepo = MoneyRepo(moneyDAO)
-        val moneyViewModelFactory = MoneyViewModelFactory(moneyRepo)
-
-        moneyViewModel = ViewModelProviders.of(this,moneyViewModelFactory).
-        get(MoneyViewModel::class.java)
+//        val moneyDatabase = MoneyDatabase.getDatabaseObject(context)
+//        val moneyDAO = moneyDatabase.getMoneyDAO()
+//        val moneyRepo = MoneyRepo(moneyDAO)
+//        val moneyViewModelFactory = MoneyViewModelFactory(moneyRepo)
+//
+//        moneyViewModel = ViewModelProviders.of(this,moneyViewModelFactory).
+//        get(MoneyViewModel::class.java)
         val prefs = PreferenceManager.getDefaultSharedPreferences(context)
         if (!prefs.getBoolean("firstTime", false)) {
             // <---- run your one time code here

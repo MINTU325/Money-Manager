@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,26 +19,27 @@ import com.mintukumar.moneymanager.viewmodel.MoneyViewModelFactory
 import com.mintukumar.moneymanager.views.EditItemActivity
 import com.mintukumar.moneymanager.views.adapter.MoneyAdapter
 import com.mintukumar.moneymanager.views.adapter.OnItemClickListener
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_income.*
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class ExpenseFragment : Fragment(R.layout.fragment_expense), OnItemClickListener {
 
     private var listMoney = mutableListOf<Money>()
 
-//    private val moneyViewModel: MoneyViewModel by viewModels()
-    lateinit var  moneyViewModel: MoneyViewModel
+    private val moneyViewModel: MoneyViewModel by viewModels()
+//    lateinit var  moneyViewModel: MoneyViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val moneyDatabase = MoneyDatabase.getDatabaseObject(context)
-        val moneyDAO = moneyDatabase.getMoneyDAO()
-        val moneyRepo = MoneyRepo(moneyDAO)
-        val moneyViewModelFactory = MoneyViewModelFactory(moneyRepo)
-
-        moneyViewModel = ViewModelProviders.of(this,moneyViewModelFactory).
-        get(MoneyViewModel::class.java)
+//        val moneyDatabase = MoneyDatabase.getDatabaseObject(context)
+//        val moneyDAO = moneyDatabase.getMoneyDAO()
+//        val moneyRepo = MoneyRepo(moneyDAO)
+//        val moneyViewModelFactory = MoneyViewModelFactory(moneyRepo)
+//
+//        moneyViewModel = ViewModelProviders.of(this,moneyViewModelFactory).
+//        get(MoneyViewModel::class.java)
 
         recyclerView.adapter = MoneyAdapter(listMoney,this)
         recyclerView.layoutManager = LinearLayoutManager(context)

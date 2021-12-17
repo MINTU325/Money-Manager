@@ -4,9 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.mintukumar.moneymanager.model.Money
 import com.mintukumar.moneymanager.repository.MoneyRepo
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-//@HiltViewModel
-class MoneyViewModel(val repo: MoneyRepo): ViewModel() {
+@HiltViewModel
+class MoneyViewModel @Inject constructor(val repo: MoneyRepo): ViewModel() {
 
     fun addMoney(money: Money){
         repo.addMoneyToRoom(money)
